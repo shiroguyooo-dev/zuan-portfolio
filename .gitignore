@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+*.log
+.env
+.env.local
+.DS_Store
+shots/
+shot-*.png
+shots.py
+qa.py

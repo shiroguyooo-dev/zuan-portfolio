@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="AI assistant console art">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0e18"/>
+      <stop offset="100%" stop-color="#050810"/>
+    </linearGradient>
+    <linearGradient id="c" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#a3e635"/>
+    </linearGradient>
+    <pattern id="g3" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg3)"/>
+  <rect width="800" height="500" fill="url(#g3)"/>
+  <circle cx="620" cy="380" r="220" fill="#22d3ee" opacity="0.13"/>
+  <g fill="none" stroke="url(#c)" stroke-width="2.5" opacity="0.9">
+    <rect x="130" y="130" width="340" height="70" rx="16"/>
+    <rect x="200" y="230" width="340" height="70" rx="16" opacity="0.7"/>
+    <rect x="270" y="330" width="340" height="70" rx="16" opacity="0.45"/>
+  </g>
+  <g fill="#22d3ee">
+    <circle cx="170" cy="165" r="6"/><circle cx="240" cy="265" r="6"/><circle cx="310" cy="365" r="6"/>
+  </g>
+  <g fill="url(#c)" opacity="0.85">
+    <rect x="200" y="158" width="180" height="12" rx="6"/>
+    <rect x="270" y="258" width="150" height="12" rx="6"/>
+    <rect x="340" y="358" width="120" height="12" rx="6"/>
+  </g>
+  <text x="60" y="452" font-family="monospace" font-size="20" fill="#e6ecf5" fill-opacity="0.55">ai · assistant console</text>
+</svg>

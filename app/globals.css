@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #05070d;
+  color: #e6ecf5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ---------- animated background ---------- */
+.bg-aura {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(60% 50% at 15% 0%, rgba(34, 211, 238, 0.10), transparent 60%),
+    radial-gradient(50% 45% at 85% 10%, rgba(139, 92, 246, 0.12), transparent 60%),
+    radial-gradient(45% 45% at 50% 100%, rgba(163, 230, 53, 0.06), transparent 60%);
+  animation: aurashift 18s ease-in-out infinite alternate;
+}
+
+@keyframes aurashift {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  100% { transform: translate3d(0,-2%,0) scale(1.08); }
+}
+
+/* fine grain overlay */
+.bg-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* grid lines */
+.grid-lines {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(70% 60% at 50% 40%, #000 40%, transparent 100%);
+}
+
+/* ---------- glass ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+/* ---------- product card spotlight ---------- */
+.card-hover {
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s;
+}
+.card-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 0%),
+              rgba(34,211,238,0.14), transparent 60%);
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(34,211,238,0.35);
+}
+.card-hover:hover::after { opacity: 1; }
+
+/* ---------- neon button ---------- */
+.btn-neon {
+  position: relative;
+  background: linear-gradient(100deg, #22d3ee, #a3e635 55%, #8b5cf6);
+  color: #04121a;
+  font-weight: 700;
+  letter-spacing: .01em;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 12px 40px -12px rgba(34,211,238,.7);
+  transition: transform .25s, box-shadow .25s, filter .25s;
+  background-size: 180% 180%;
+}
+.btn-neon:hover {
+  transform: translateY(-2px);
+  filter: saturate(120%) brightness(1.05);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 20px 60px -14px rgba(139,92,246,.85);
+  animation: gradmove 3s ease-in-out infinite alternate;
+}
+@keyframes gradmove { to { background-position: 100% 50%; } }
+
+/* ---------- gradient text ---------- */
+.gradient-text {
+  background: linear-gradient(100deg, #22d3ee, #a3e635 50%, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  animation: gradmove 5s ease-in-out infinite alternate;
+}
+
+/* ---------- marquee ---------- */
+.marquee {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.group:hover .marquee { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- custom scrollbar ---------- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #05070d; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#22d3ee, #8b5cf6);
+  border-radius: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
